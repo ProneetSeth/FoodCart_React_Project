@@ -27,10 +27,13 @@ const Products = () => {
     ])
 
     useEffect(()=>{
-        const result = fetch(`https://react-donut-app-default-rtdb.firebaseio.com/items.json`)
+        fetch(`https://react-donut-app-default-rtdb.firebaseio.com/items.json`)
         .then(response => response.json())
         .then(data => {
             console.log(data)
+        })
+        .catch(error =>{
+            console.log(error);
         })
     },[])
 
