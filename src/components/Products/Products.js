@@ -3,29 +3,7 @@ import ListItem from "./ListItems/ListItem"
 import axios from "axios"
 
 const Products = () => {
-    const [items,setItems] = useState([
-        {
-            id:0,
-            discountedPrice: 340,
-            price: 450,
-            title: "Title of the Item",
-            thumbnail: "donut.png"
-        },
-        {
-            id: 1,
-            discountedPrice: 200,
-            price: 350,
-            title: "Title of the Item",
-            thumbnail: "donut.png"
-        },
-        {
-            id: 2,
-            discountedPrice: 300,
-            price: 450,
-            title: "Title of the Item",
-            thumbnail: "donut.png"
-        }
-    ])
+    const [items,setItems] = useState([])
 
     useEffect(()=>{
         // fetch(`https://react-donut-app-default-rtdb.firebaseio.com/items.json`)
