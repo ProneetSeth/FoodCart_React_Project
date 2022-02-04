@@ -1,5 +1,6 @@
 import {useEffect, useState } from "react"
 import ListItem from "./ListItems/ListItem"
+import axios from "axios"
 
 const Products = () => {
     const [items,setItems] = useState([
@@ -27,10 +28,17 @@ const Products = () => {
     ])
 
     useEffect(()=>{
-        fetch(`https://react-donut-app-default-rtdb.firebaseio.com/items.json`)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
+        // fetch(`https://react-donut-app-default-rtdb.firebaseio.com/items.json`)
+        // .then(response => response.json())
+        // .then(data => {
+        //     console.log(data)
+        // })
+        // .catch(error =>{
+        //     console.log(error);
+        // })
+        axios.get('https://react-donut-app-default-rtdb.firebaseio.com/items.json')
+        .then(response =>{
+            console.log(response);
         })
         .catch(error =>{
             console.log(error);
