@@ -28,8 +28,9 @@ const Products = () => {
 
     useEffect(()=>{
         const result = fetch(`https://react-donut-app-default-rtdb.firebaseio.com/items.json`)
-        .then(response =>{
-            console.log(response)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
         })
     },[])
 
