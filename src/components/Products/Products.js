@@ -38,7 +38,16 @@ const Products = () => {
         // })
         axios.get('https://react-donut-app-default-rtdb.firebaseio.com/items.json')
         .then(response =>{
-            console.log(response);
+            //console.log(response);
+            const data = response.data
+            const transformedData = data.map((item,index)=>{
+                return{
+                    ...item,
+                    id:index 
+                    //getting the index and mapping the data for id 
+                }
+            })
+            console.log(transformedData);
         })
         .catch(error =>{
             console.log(error);
