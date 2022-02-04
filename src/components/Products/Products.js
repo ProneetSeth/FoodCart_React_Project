@@ -14,9 +14,8 @@ const Products = () => {
         // .catch(error =>{
         //     console.log(error);
         // })
-        axios.get('https://react-donut-app-default-rtdb.firebaseio.com/items.json')
-        .then(response =>{
-            //console.log(response);
+        async function fetchItems(){
+            const response = await axios.get('https://react-donut-app-default-rtdb.firebaseio.com/items.json')
             const data = response.data
             const transformedData = data.map((item,index)=>{
                 return{
@@ -27,10 +26,9 @@ const Products = () => {
             })
             setItems(transformedData)
             //console.log(transformedData);
-        })
-        .catch(error =>{
-            console.log(error);
-        })
+        }
+        
+        fetchItems();
     },[])
 
     return (
