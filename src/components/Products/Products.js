@@ -1,4 +1,4 @@
-import { useState } from "react"
+import {useEffect, useState } from "react"
 import ListItem from "./ListItems/ListItem"
 
 const Products = () => {
@@ -25,6 +25,12 @@ const Products = () => {
             thumbnail: "donut.png"
         }
     ])
+
+    useEffect(()=>{
+        const result = fetch(`https://react-donut-app-default-rtdb.firebaseio.com/items.json`)
+        console.log(result)
+    },[])
+
     return (
         <div className={"product-list"}>
             <div className={"product-list--wrapper"}>
