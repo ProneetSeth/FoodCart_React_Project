@@ -25,7 +25,8 @@ const Products = () => {
                     //getting the index and mapping the data for id 
                 }
             })
-            console.log(transformedData);
+            setItems(transformedData)
+            //console.log(transformedData);
         })
         .catch(error =>{
             console.log(error);

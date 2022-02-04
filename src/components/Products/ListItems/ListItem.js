@@ -1,5 +1,5 @@
 import { useState } from "react"
-import CartIcon from "../../../assets/icons/cart1.svg"
+import CartIcon from "../../../assets/icons/add_cart.svg"
 
 const ListItem = ({data}) =>{
     const [counter,setCounter] = useState(0)
