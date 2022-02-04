@@ -15,19 +15,24 @@ const Products = () => {
         //     console.log(error);
         // })
         async function fetchItems(){
-            const response = await axios.get('https://react-donut-app-default-rtdb.firebaseio.com/items.json')
-            const data = response.data
-            const transformedData = data.map((item,index)=>{
-                return{
-                    ...item,
-                    id:index 
-                    //getting the index and mapping the data for id 
-                }
-            })
-            setItems(transformedData)
-            //console.log(transformedData);
+            try{
+                const response = await axios.get('https://react-donut-app-default-rtdb.firebaseio.com/items.json')
+                const data = response.data
+                const transformedData = data.map((item,index)=>{
+                    return{
+                        ...item,
+                        id:index 
+                        //getting the index and mapping the data for id 
+                    }
+                })
+                setItems(transformedData)
+                //console.log(transformedData);
+            }  
+            catch(error){
+            console.log("Error", error);
+            alert("some error occured")
+            }
         }
-        
         fetchItems();
     },[])
 
