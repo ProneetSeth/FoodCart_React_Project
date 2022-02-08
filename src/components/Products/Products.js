@@ -35,7 +35,10 @@ const Products = () => {
         }
         fetchItems();
     },[])
-
+    
+    const updateItemTitle = itemId =>{
+        console.log(`item with ID: ${itemId}`);
+    }
     return (
         <div className={"product-list"}>
             <div className={"product-list--wrapper"}>
