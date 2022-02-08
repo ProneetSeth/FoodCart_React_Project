@@ -39,9 +39,15 @@ const Products = () => {
     const updateItemTitle = async(itemId) =>{
         //console.log(`item with ID: ${itemId}`);
         try{
+            let title = `update title #item-${itemId}`
             await axios.patch(`https://react-donut-app-default-rtdb.firebaseio.com/items/${itemId}.json`,{
-                title:"Some updated Title"
+                title:title
             })
+            let data = [...items]
+            let index = data.findIndex(e => e.id === itemId)
+            data[index]['title'] = title
+            
+            setItems(data)
         }
         catch(error){
             console.log("Error updating the data");
