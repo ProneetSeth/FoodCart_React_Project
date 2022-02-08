@@ -44,7 +44,7 @@ const Products = () => {
             <div className={"product-list--wrapper"}>
                 {
                     items.map(item =>{
-                        return(<ListItem key={item.id} data={item}/>)
+                        return(<ListItem key={item.id} data={item} updateItemTitle={updateItemTitle}/>)
                     })
                 }
                 
