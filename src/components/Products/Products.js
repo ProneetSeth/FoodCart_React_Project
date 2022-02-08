@@ -36,8 +36,16 @@ const Products = () => {
         fetchItems();
     },[])
     
-    const updateItemTitle = itemId =>{
-        console.log(`item with ID: ${itemId}`);
+    const updateItemTitle = async(itemId) =>{
+        //console.log(`item with ID: ${itemId}`);
+        try{
+            await axios.patch(`https://react-donut-app-default-rtdb.firebaseio.com/items/${itemId}.json`,{
+                title:"Some updated Title"
+            })
+        }
+        catch(error){
+            console.log("Error updating the data");
+        }
     }
     return (
         <div className={"product-list"}>
