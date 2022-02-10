@@ -1,10 +1,11 @@
 import {useEffect, useState } from "react"
 import ListItem from "./ListItems/ListItem"
 import axios from "axios"
+import Loader from "../UI/Loader"
 
 const Products = () => {
     const [items,setItems] = useState([])
-
+    const [loader,setLoader] = useState(true)
     useEffect(()=>{
         // fetch(`https://react-donut-app-default-rtdb.firebaseio.com/items.json`)
         // .then(response => response.json())
@@ -25,12 +26,17 @@ const Products = () => {
                         //getting the index and mapping the data for id 
                     }
                 })
+                //setLoader(false)
                 setItems(transformedData)
                 //console.log(transformedData);
             }  
             catch(error){
-            console.log("Error", error);
-            alert("some error occured")
+                //setLoader(false)
+                console.log("Error", error);
+                alert("some error occured")
+            }
+            finally{
+                setLoader(false)
             }
         }
         fetchItems();
@@ -54,6 +60,7 @@ const Products = () => {
         }
     }
     return (
+        <>
         <div className={"product-list"}>
             <div className={"product-list--wrapper"}>
                 {
@@ -64,6 +71,8 @@ const Products = () => {
                 
             </div>
         </div>
+        {loader && <Loader/>}
+        </>
     )
 }
 
