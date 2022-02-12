@@ -38,6 +38,34 @@
             }
         }
     }
+    
+    &__modal{
+        display: flex;
+        .img-wrap{
+            flex-basis: 40%;
+            min-width: 40%;
+        }
+        .meta{
+            flex-grow: 60%;
+            h3{
+                margin-top: 12px;
+                margin-bottom: 4px;
+                opacity: 0.8;
+            }
+            p{
+                font-weight: 300;
+                color: gray;
+                font-family: Roboto;
+                font-size: 14px;
+            }
+        }
+        button.card-add{
+            border-radius: 0px;
+        }
+        .cart-addon{
+            justify-content: space-between;
+        }
+    }
 }
 
 .pricing{
