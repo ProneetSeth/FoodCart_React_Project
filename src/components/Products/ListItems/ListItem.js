@@ -7,11 +7,13 @@ const ListItem = ({ data, updateItemTitle }) => {
     const [counter, setCounter] = useState(0)
     const [showModal, setShowModal] = useState(false)
 
-    const increaseCounterByOne = () => {
+    const increaseCounterByOne = event => {
+        event.stopPropagation()
         setCounter(counter + 1)
     }
 
-    const decreaseCounterByOne = () => {
+    const decreaseCounterByOne = event => {
+        event.stopPropagation()
         if (counter === 0) {
             return;
         }
@@ -68,6 +70,19 @@ const ListItem = ({ data, updateItemTitle }) => {
                                 </small>
                             </div>
                             <p>{data.description}</p>
+                            {
+                                counter < 1 ?
+                                    <button className={"card-add card-add__modal"} onClick={increaseCounterByOne}>
+                                        <span>Add To Cart</span>
+                                        <img src={CartIcon} alt="Cart Icon" width="18px" height="18px" />
+                                    </button>
+                                    :
+                                    <div className="cart-addon cart-addon__modal">
+                                        <button onClick={decreaseCounterByOne}><span>-</span></button>
+                                        <span>{counter}</span>
+                                        <button onClick={increaseCounterByOne}><span>+</span></button>
+                                    </div>
+                            }
                         </div>
                     </div>
                 </Modal>
