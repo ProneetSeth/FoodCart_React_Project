@@ -3,9 +3,27 @@ import ListItem from "./ListItems/ListItem"
 import axios from "axios"
 import Loader from "../UI/Loader"
 
-const Products = () => {
+const Products = ({onAddItem,onRemoveItem}) => {
     const [items,setItems] = useState([])
     const [loader,setLoader] = useState(true)
+    const [presentItems, setPresentItems] = useState([])
+    const handleAddItem = id =>{
+        if(presentItems.indexOf(id) > -1){
+            return
+        }
+        setPresentItems([...presentItems,id])
+        onAddItem();
+    }
+    const handleRemoveItem = id =>{
+        let index = presentItems.indexOf(id)
+        if(index > -1){
+            let items = [...presentItems]
+            items.splice(index,1)
+            setPresentItems([...items]);
+            onRemoveItem();
+        }
+        
+    }
     useEffect(()=>{
         // fetch(`https://react-donut-app-default-rtdb.firebaseio.com/items.json`)
         // .then(response => response.json())
@@ -65,7 +83,7 @@ const Products = () => {
             <div className={"product-list--wrapper"}>
                 {
                     items.map(item =>{
-                        return(<ListItem key={item.id} data={item} updateItemTitle={updateItemTitle}/>)
+                        return(<ListItem onAdd={handleAddItem} onRemove={handleRemoveItem} key={item.id} data={item} updateItemTitle={updateItemTitle}/>)
                     })
                 }
                 

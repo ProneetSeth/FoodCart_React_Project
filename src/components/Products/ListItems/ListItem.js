@@ -3,12 +3,14 @@ import { Fragment } from "react/cjs/react.production.min"
 import CartIcon from "../../../assets/icons/add_cart.svg"
 import Modal from "../../UI/Modal"
 
-const ListItem = ({ data, updateItemTitle }) => {
+const ListItem = ({ data, updateItemTitle, onAdd, onRemove }) => {
     const [counter, setCounter] = useState(0)
     const [showModal, setShowModal] = useState(false)
+    
 
     const increaseCounterByOne = event => {
         event.stopPropagation()
+        onAdd(data.id)
         setCounter(counter + 1)
     }
 
@@ -16,6 +18,9 @@ const ListItem = ({ data, updateItemTitle }) => {
         event.stopPropagation()
         if (counter === 0) {
             return;
+        }
+        if(counter == 1){
+            onRemove(data.id)
         }
         setCounter(counter - 1)
     }

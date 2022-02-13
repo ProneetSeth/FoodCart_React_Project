@@ -1,4 +1,4 @@
-const Header = () => {
+const Header = ({count}) => {
     return (
         <header>
             <div className="nav-brand">
@@ -38,7 +38,7 @@ const Header = () => {
             </div>
             <div className="cart-container">
                 <button>
-                    <span className="cart" data-items={0}>Cart</span>
+                    <span className="cart" data-items={count}>Cart</span>
                     <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-search" height="30" viewBox="0 0 24 24"
                              fill="none" strokeWidth="1.5" stroke="white" strokeLinejoin="round" strokeLinecap="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" /> 
